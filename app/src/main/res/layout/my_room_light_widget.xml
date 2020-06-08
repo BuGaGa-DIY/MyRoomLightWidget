@@ -1,38 +1,47 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#09C"
-    android:padding="@dimen/widget_margin">
+    android:padding="@dimen/widget_margin"
+    android:background="@android:color/transparent">
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/light1ON"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:text="1 ON"
-        android:id="@+id/light1ON"/>
+        android:background="@drawable/baseline_check_black_48dp"
+        android:text="1"
+        android:gravity="bottom"/>
+
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/light2ON"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/light1ON"
-        android:text="2 ON"
-        android:id="@+id/light2ON"/>
+        android:background="@drawable/baseline_check_black_48dp"
+        android:text="2"
+        android:gravity="bottom"/>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+        android:id="@+id/light1OFF"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         android:layout_below="@+id/light1ON"
-        android:text="1 OFF"
-        android:id="@+id/light1OFF"/>
+        android:layout_alignParentStart="true"
+        android:background="@drawable/baseline_close_black_48dp"
+        android:text="1"
+        android:gravity="bottom"/>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/light1OFF"
+        android:id="@+id/light2OFF"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         android:layout_below="@+id/light2ON"
-        android:text="2 OFF"
-        android:id="@+id/light2OFF"/>
+        android:layout_toEndOf="@+id/light1OFF"
+        android:background="@drawable/baseline_close_black_48dp"
+        android:text="2"
+        android:gravity="bottom"/>
 </RelativeLayout>
