@@ -97,7 +97,8 @@ internal fun updateAppWidget(
     appWidgetManager: AppWidgetManager,
     appWidgetId: Int
 ) {
-    val views = RemoteViews(context.packageName, R.layout.my_room_light_widget)
+    //val views = RemoteViews(context.packageName, R.layout.my_room_light_widget)
+    val views = RemoteViews(context.packageName,R.layout.my_room_light_widget)
     //views.setTextViewText(R.id.appwidget_text, widgetText)
     views.setOnClickPendingIntent(R.id.light1ON, getIntent(context,"ON1")) //"BuGaGa/feeds/light1"
     views.setOnClickPendingIntent(R.id.light1OFF, getIntent(context,"OFF1"))

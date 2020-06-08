@@ -25,8 +25,7 @@ class MainActivity : AppCompatActivity() {
             context.startService(myIntent)
 
         }
-
-
+        finish()
     }
 }
 

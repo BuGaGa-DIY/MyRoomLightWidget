@@ -1,47 +1,69 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="@dimen/widget_margin"
-    android:background="@android:color/transparent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="190dp"
+    android:layout_height="190dp"
+    android:orientation="vertical">
 
-    <Button
-        android:id="@+id/light1ON"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:background="@drawable/baseline_check_black_48dp"
-        android:text="1"
-        android:gravity="bottom"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
+        <Button
+            android:id="@+id/light1ON"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/img_light_on"
+            android:fontFamily="@font/bowlby_one"
+            android:text="1"
 
-    <Button
-        android:id="@+id/light2ON"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/light1ON"
-        android:background="@drawable/baseline_check_black_48dp"
-        android:text="2"
-        android:gravity="bottom"/>
+            android:textColor="#8003B8FF"
+            android:textSize="50sp" />
 
-    <Button
-        android:id="@+id/light1OFF"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_below="@+id/light1ON"
-        android:layout_alignParentStart="true"
-        android:background="@drawable/baseline_close_black_48dp"
-        android:text="1"
-        android:gravity="bottom"/>
+        <Button
+            android:id="@+id/light2ON"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/img_light_on"
+            android:fontFamily="@font/bowlby_one"
+            android:text="2"
+            android:textColor="#8003B8FF"
+            android:textSize="50sp" />
 
-    <Button
-        android:id="@+id/light2OFF"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_below="@+id/light2ON"
-        android:layout_toEndOf="@+id/light1OFF"
-        android:background="@drawable/baseline_close_black_48dp"
-        android:text="2"
-        android:gravity="bottom"/>
-</RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        >
+
+        <Button
+            android:id="@+id/light1OFF"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/img_light_off"
+            android:fontFamily="@font/bowlby_one"
+            android:text="1"
+            android:textColor="#99FFC800"
+            android:textSize="50sp" />
+
+        <Button
+            android:id="@+id/light2OFF"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/img_light_off"
+            android:fontFamily="@font/bowlby_one"
+            android:text="2"
+            android:textColor="#99FFC800"
+            android:textSize="50sp" />
+
+    </LinearLayout>
+
+</LinearLayout>
