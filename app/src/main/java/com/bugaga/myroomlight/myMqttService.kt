@@ -17,7 +17,7 @@ class myMqttService: IntentService(myMqttService::class.java.toString()) {
             val myData = intent.getStringExtra("Data")
             output("Sending Topic: $myTopic; Msg: $myData")
             try {
-                myMqttClient(applicationContext,myTopic,myData)
+                myMqttClient(applicationContext,myTopic!!,myData!!)
                 //myRequest.execute()
             }catch (e: Exception){
                 output("Some error appears while creating client")

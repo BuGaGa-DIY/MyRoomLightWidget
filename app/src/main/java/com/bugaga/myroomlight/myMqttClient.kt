@@ -1,5 +1,6 @@
 package com.bugaga.myroomlight
 
+import android.appwidget.AppWidgetManager
 import android.content.Context
 import android.content.Intent
 import android.os.AsyncTask
@@ -25,6 +26,12 @@ class myMqttClient(private val context: Context,val Topic:String, val Message:St
         return null
     }
 
+    fun sendComplitIntent(){
+        val offIntent = Intent(context, MyRoomLightWidget::class.java)
+        val tmpStr = Topic.substring(Topic.indexOf("/Light")+6)
+        offIntent.action = "$tmpStr$Message"
+        context.sendBroadcast(offIntent)
+    }
     fun connect(topic: String,data: String) {
         try {
             val options = MqttConnectOptions()
@@ -36,9 +43,6 @@ class myMqttClient(private val context: Context,val Topic:String, val Message:St
                     output( "Connected to: $serverURI")
                     _connectionStatus = 1
                     publishMessage(topic,data)
-                    val offIntent = Intent(context, MyRoomLightWidget::class.java)
-                    offIntent.action = "offIntent"
-                    context.sendBroadcast(offIntent)
                 }
 
                 override fun connectionLost(cause: Throwable) {
@@ -54,9 +58,7 @@ class myMqttClient(private val context: Context,val Topic:String, val Message:St
 
                 override fun deliveryComplete(token: IMqttDeliveryToken) {
                     output("Delivery Complete, starting intent")
-                    val offIntent = Intent(context, MyRoomLightWidget::class.java)
-                    offIntent.action = "offIntent"
-                    context.sendBroadcast(offIntent)
+                    sendComplitIntent()
                 }
             })
         } catch (e: MqttException) {
@@ -84,6 +86,7 @@ class myMqttClient(private val context: Context,val Topic:String, val Message:St
             message.payload = msg.toByteArray()
             client.publish(topic, message.payload, 0, true)
             output( "$msg published to $topic")
+            sendComplitIntent()
             close()
         } catch (e: MqttException) {
             output( "Error Publishing to $topic: " + e.message)
