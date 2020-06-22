@@ -46,18 +46,34 @@ class MyRoomLightWidget : AppWidgetProvider() {
     override fun onReceive(context: Context?, intent: Intent?) {
         var myAction = "null"
         if (intent != null) myAction = intent.action!!
-        if (myAction.contains("goCrazy")){
-            //output("Get Intent, ${intent.action}")
-            val myIntent = Intent(context,myMqttService::class.java)
+        else return
+        output("Received not null intent: $myAction")
+        val myIntent = Intent(context,myMqttService::class.java)
+        when(myAction){
+            "goCrazyON1"->{
+                myIntent.putExtra("Data","ON")
+                myIntent.putExtra("Topic","BuGaGa/feeds/Light1")
+            }
+            "goCrazyON2"-> {
+                myIntent.putExtra("Data", "ON")
+                myIntent.putExtra("Topic", "BuGaGa/feeds/Light2")
+            }
+            "goCrazyOFF1"-> {
+                myIntent.putExtra("Data", "OFF")
+                myIntent.putExtra("Topic", "BuGaGa/feeds/Light1")
+            }
+            "goCrazyOFF2"-> {
+                myIntent.putExtra("Data", "OFF")
+                myIntent.putExtra("Topic", "BuGaGa/feeds/Light2")
+            }
 
-            if (myAction.contains("ON")) myIntent.putExtra("Data","ON")
-            else myIntent.putExtra("Data","OFF")
-
-            if (myAction.contains("1")) myIntent.putExtra("Topic","BuGaGa/feeds/Light1")
-            else myIntent.putExtra("Topic","BuGaGa/feeds/Light2")
-
-            context?.startService(myIntent)
+            "offIntent"->{
+                output("offIntent received")
+                //val views = RemoteViews(context?.packageName,R.layout.my_room_light_widget)
+                //views.setTextViewText("0")
+            }
         }
+        context?.startService(myIntent)
         super.onReceive(context, intent)
     }
 

@@ -12,7 +12,7 @@ class myMqttService: IntentService(myMqttService::class.java.toString()) {
 
     override fun onHandleIntent(intent: Intent?) {
         output("mqtt service got intent and ready to start")
-        if (intent != null){
+        if (intent != null && intent.hasExtra("Topic")){
             val myTopic = intent.getStringExtra("Topic")
             val myData = intent.getStringExtra("Data")
             output("Sending Topic: $myTopic; Msg: $myData")
