@@ -35,8 +35,8 @@ class myMqttClient(private val context: Context,val Topic:String, val Message:St
     fun connect(topic: String,data: String) {
         try {
             val options = MqttConnectOptions()
-            options.userName = "BuGaGa"
-            options.password = "aio_xwYt514kazXaPXHRvoq867iFvgzl".toCharArray()
+            options.userName = ""
+            options.password = "".toCharArray()
             client.connect(options)
             client.setCallback(object : MqttCallbackExtended {
                 override fun connectComplete(reconnect: Boolean, serverURI: String) {
